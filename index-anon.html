@@ -362,6 +362,25 @@ section { position: relative; overflow: hidden; }
   color: #ff4444;
 }
 
+/* UNMUTE OVERLAY */
+.unmute-overlay {
+  position: absolute; inset: 0;
+  z-index: 10;
+  cursor: pointer;
+  display: flex; align-items: flex-end; justify-content: flex-start;
+  padding: 10px;
+}
+.unmute-overlay::after {
+  content: '🔇';
+  font-size: 1.1rem;
+  background: rgba(5,5,7,0.55);
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.unmute-overlay.unmuted { display: none; }
+
 /* FOOTER */
 footer {
   background: var(--bg);
@@ -391,8 +410,11 @@ footer p {
 .shorts-grid .reveal:nth-child(4) { transition-delay: 150ms; }
 .shorts-grid .reveal:nth-child(5) { transition-delay: 200ms; }
 .shorts-grid .reveal:nth-child(6) { transition-delay: 250ms; }
-.shorts-grid .reveal:nth-child(7) { transition-delay: 300ms; }
-.shorts-grid .reveal:nth-child(8) { transition-delay: 350ms; }
+.shorts-grid .reveal:nth-child(7)  { transition-delay: 300ms; }
+.shorts-grid .reveal:nth-child(8)  { transition-delay: 350ms; }
+.shorts-grid .reveal:nth-child(9)  { transition-delay: 400ms; }
+.shorts-grid .reveal:nth-child(10) { transition-delay: 450ms; }
+.shorts-grid .reveal:nth-child(11) { transition-delay: 500ms; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -555,49 +577,78 @@ footer p {
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906287?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906287?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906285?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906285?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906283?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906283?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906277?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906277?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906239?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906239?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906238?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906238?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906237?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906237?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe src="https://player.vimeo.com/video/1201906240?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <iframe src="https://player.vimeo.com/video/1201906240?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
+        </div>
+      </div>
+
+      <div class="short-card reveal">
+        <div class="short-thumb">
+          <iframe src="https://player.vimeo.com/video/1193072165?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
+        </div>
+      </div>
+
+      <div class="short-card reveal">
+        <div class="short-thumb">
+          <iframe src="https://player.vimeo.com/video/1193389158?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
+        </div>
+      </div>
+
+      <div class="short-card reveal">
+        <div class="short-thumb">
+          <iframe src="https://player.vimeo.com/video/1193389134?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
+          <div class="unmute-overlay"></div>
         </div>
       </div>
 
@@ -815,6 +866,17 @@ function drawFrame() {
   requestAnimationFrame(drawFrame);
 }
 drawFrame();
+
+// UNMUTE ON CLICK
+document.querySelectorAll('.unmute-overlay').forEach(overlay => {
+  overlay.addEventListener('click', () => {
+    const iframe = overlay.previousElementSibling;
+    const player = new Vimeo.Player(iframe);
+    player.setVolume(1).then(() => {
+      overlay.classList.add('unmuted');
+    });
+  });
+});
 
 // SCROLL REVEAL
 const reveals  = document.querySelectorAll('.reveal');
