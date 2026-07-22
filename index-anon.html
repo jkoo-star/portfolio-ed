@@ -322,18 +322,24 @@ section { position: relative; overflow: hidden; }
   position: absolute; inset: 0;
   z-index: 10;
   cursor: pointer;
-  display: flex; align-items: flex-end; justify-content: flex-start;
-  padding: 10px;
+  display: flex; align-items: center; justify-content: center;
 }
 .unmute-overlay::after {
-  content: '🔇 TAP TO UNMUTE';
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.1em;
+  content: '▶';
+  font-size: 1.35rem;
   color: var(--text);
-  background: rgba(5,5,7,0.65);
-  padding: 4px 8px;
+  background: rgba(5,5,7,0.55);
+  width: 54px; height: 54px;
+  padding-left: 4px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
   pointer-events: none;
+}
+.short-card:hover .unmute-overlay::after {
+  background: var(--accent); color: var(--bg);
+  border-color: var(--accent); transform: scale(1.08);
 }
 .unmute-overlay.unmuted { display: none; }
 
@@ -718,30 +724,17 @@ function drawFrame() {
 }
 drawFrame();
 
-// LAZY LOAD IFRAMES
-const lazyIframes = document.querySelectorAll('iframe[data-src]');
-const iframeObs = new IntersectionObserver((entries, obs) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const iframe = e.target;
-      iframe.src = iframe.dataset.src;
-      obs.unobserve(iframe);
-    }
-  });
-}, { rootMargin: '200px' });
-lazyIframes.forEach(iframe => iframeObs.observe(iframe));
-
-// UNMUTE ON CLICK
-document.querySelectorAll('.unmute-overlay').forEach(overlay => {
-  overlay.addEventListener('click', () => {
-    const iframe = overlay.previousElementSibling;
-    if (!iframe.src && iframe.dataset.src) {
-      iframe.src = iframe.dataset.src;
-    }
-    const player = new Vimeo.Player(iframe);
-    player.setVolume(1).then(() => {
-      overlay.classList.add('unmuted');
-    });
+// PLAY ON CLICK — nothing loads or plays until the user clicks a card
+document.querySelectorAll('.short-card').forEach(card => {
+  const iframe  = card.querySelector('iframe[data-src]');
+  const overlay = card.querySelector('.unmute-overlay');
+  if (!iframe) return;
+  card.addEventListener('click', () => {
+    if (iframe.src) return; // already playing
+    let url = iframe.dataset.src.replace('muted=1', 'muted=0');
+    if (!/autoplay=1/.test(url)) url += '&autoplay=1';
+    iframe.src = url;
+    if (overlay) overlay.classList.add('unmuted');
   });
 });
 
