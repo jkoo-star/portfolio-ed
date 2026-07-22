@@ -237,7 +237,6 @@ nav {
 /* SHARED SECTION STYLES */
 section { position: relative; overflow: hidden; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 8rem 4vw; }
-#long-form .section-inner { max-width: 1000px; }
 
 .section-label {
   font-family: var(--font-mono);
@@ -253,53 +252,6 @@ section { position: relative; overflow: hidden; }
   line-height: 1;
   letter-spacing: 0.03em;
   margin-bottom: 3rem;
-}
-
-/* LONG-FORM SECTION */
-#long-form { background: var(--bg); }
-
-.video-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-top: 2rem;
-}
-.video-card {
-  position: relative;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  overflow: hidden;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  max-width: 960px;
-  transition: border-color 0.3s;
-}
-.video-card:hover { border-color: var(--accent); }
-.video-thumb {
-  width: 100%; aspect-ratio: 16/9;
-  min-height: 480px;
-  background: linear-gradient(135deg, #0e0e18 0%, #1a1a28 100%);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-@media (max-width: 768px) {
-  .video-thumb { min-height: 0; }
-}
-.video-thumb iframe {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  border: 0; pointer-events: auto;
-}
-
-.card-counter {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  padding: 0.8rem 1.25rem 0;
-  opacity: 0.7;
 }
 
 /* SHORT-FORM SECTION */
@@ -370,18 +322,24 @@ section { position: relative; overflow: hidden; }
   position: absolute; inset: 0;
   z-index: 10;
   cursor: pointer;
-  display: flex; align-items: flex-end; justify-content: flex-start;
-  padding: 10px;
+  display: flex; align-items: center; justify-content: center;
 }
 .unmute-overlay::after {
-  content: '🔇 TAP TO UNMUTE';
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.1em;
+  content: '▶';
+  font-size: 1.35rem;
   color: var(--text);
-  background: rgba(5,5,7,0.65);
-  padding: 4px 8px;
+  background: rgba(5,5,7,0.55);
+  width: 54px; height: 54px;
+  padding-left: 4px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
   pointer-events: none;
+}
+.short-card:hover .unmute-overlay::after {
+  background: var(--accent); color: var(--bg);
+  border-color: var(--accent); transform: scale(1.08);
 }
 .unmute-overlay.unmuted { display: none; }
 
@@ -405,9 +363,6 @@ footer p {
 }
 .reveal.visible { opacity: 1; transform: none; }
 
-.video-grid .reveal:nth-child(1) { transition-delay: 0ms; }
-.video-grid .reveal:nth-child(2) { transition-delay: 60ms; }
-.video-grid .reveal:nth-child(3) { transition-delay: 120ms; }
 .shorts-grid .reveal:nth-child(1)  { transition-delay: 0ms; }
 .shorts-grid .reveal:nth-child(2)  { transition-delay: 50ms; }
 .shorts-grid .reveal:nth-child(3)  { transition-delay: 100ms; }
@@ -438,14 +393,12 @@ footer p {
 
 <!-- MOBILE NAV OVERLAY -->
 <div class="nav-overlay" id="navOverlay">
-  <a href="#long-form" class="overlay-link">Motion Graphics</a>
   <a href="#short-form" class="overlay-link">Short-Form</a>
 </div>
 
 <!-- NAV -->
 <nav>
   <ul class="nav-links">
-    <li><a href="#long-form" data-section="long-form">Motion Graphics</a></li>
     <li><a href="#short-form" data-section="short-form">Short-Form</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -495,108 +448,6 @@ footer p {
   </div>
 </div>
 
-<!-- LONG-FORM / MOTION GRAPHICS SECTION -->
-<section id="long-form">
-  <div class="section-inner">
-    <p class="section-label reveal">Long-Form</p>
-    <h2 class="section-title reveal">MOTION<br>GRAPHICS</h2>
-    <div class="video-grid">
-
-      <div class="video-card reveal">
-        <span class="card-counter">01</span>
-        <div class="video-thumb">
-          <iframe
-            src="https://player.vimeo.com/video/1193389135?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <span class="card-counter">02</span>
-        <div class="video-thumb">
-          <iframe
-            src="https://player.vimeo.com/video/1193389136?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <span class="card-counter">03</span>
-        <div class="video-thumb">
-          <iframe
-            src="https://player.vimeo.com/video/1201926431?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <span class="card-counter">04</span>
-        <div class="video-thumb">
-          <iframe
-            src="https://player.vimeo.com/video/1201926429?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <span class="card-counter">05</span>
-        <div class="video-thumb">
-          <iframe
-            src="https://player.vimeo.com/video/1201926430?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <span class="card-counter">06</span>
-        <div class="video-thumb">
-          <iframe
-            src="https://player.vimeo.com/video/1193072164?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="video-card reveal">
-        <span class="card-counter">07</span>
-        <div class="video-thumb">
-          <iframe
-            src="https://player.vimeo.com/video/1193072167?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1"
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- SHORT-FORM SECTION -->
 <section id="short-form">
   <div class="section-inner">
@@ -613,13 +464,6 @@ footer p {
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe data-src="https://player.vimeo.com/video/1201906285?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
-          <div class="unmute-overlay"></div>
-        </div>
-      </div>
-
-      <div class="short-card reveal">
-        <div class="short-thumb">
           <iframe data-src="https://player.vimeo.com/video/1201906283?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
           <div class="unmute-overlay"></div>
         </div>
@@ -627,21 +471,7 @@ footer p {
 
       <div class="short-card reveal">
         <div class="short-thumb">
-          <iframe data-src="https://player.vimeo.com/video/1201906277?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
-          <div class="unmute-overlay"></div>
-        </div>
-      </div>
-
-      <div class="short-card reveal">
-        <div class="short-thumb">
           <iframe data-src="https://player.vimeo.com/video/1201906239?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
-          <div class="unmute-overlay"></div>
-        </div>
-      </div>
-
-      <div class="short-card reveal">
-        <div class="short-thumb">
-          <iframe data-src="https://player.vimeo.com/video/1201906238?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
           <div class="unmute-overlay"></div>
         </div>
       </div>
@@ -704,7 +534,7 @@ document.addEventListener('mousemove', e => {
   requestAnimationFrame(animRing);
 })();
 
-document.querySelectorAll('a, button, .video-card, .short-card').forEach(el => {
+document.querySelectorAll('a, button, .short-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cursor.style.width  = '20px'; cursor.style.height  = '20px';
     ring.style.width    = '60px'; ring.style.height    = '60px';
@@ -889,30 +719,17 @@ function drawFrame() {
 }
 drawFrame();
 
-// LAZY LOAD IFRAMES
-const lazyIframes = document.querySelectorAll('iframe[data-src]');
-const iframeObs = new IntersectionObserver((entries, obs) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const iframe = e.target;
-      iframe.src = iframe.dataset.src;
-      obs.unobserve(iframe);
-    }
-  });
-}, { rootMargin: '200px' });
-lazyIframes.forEach(iframe => iframeObs.observe(iframe));
-
-// UNMUTE ON CLICK
-document.querySelectorAll('.unmute-overlay').forEach(overlay => {
-  overlay.addEventListener('click', () => {
-    const iframe = overlay.previousElementSibling;
-    if (!iframe.src && iframe.dataset.src) {
-      iframe.src = iframe.dataset.src;
-    }
-    const player = new Vimeo.Player(iframe);
-    player.setVolume(1).then(() => {
-      overlay.classList.add('unmuted');
-    });
+// PLAY ON CLICK — nothing loads or plays until the user clicks a card
+document.querySelectorAll('.short-card').forEach(card => {
+  const iframe  = card.querySelector('iframe[data-src]');
+  const overlay = card.querySelector('.unmute-overlay');
+  if (!iframe) return;
+  card.addEventListener('click', () => {
+    if (iframe.src) return; // already playing
+    let url = iframe.dataset.src.replace('muted=1', 'muted=0');
+    if (!/autoplay=1/.test(url)) url += '&autoplay=1';
+    iframe.src = url;
+    if (overlay) overlay.classList.add('unmuted');
   });
 });
 
