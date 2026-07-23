@@ -237,6 +237,7 @@ nav {
 /* SHARED SECTION STYLES */
 section { position: relative; overflow: hidden; }
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 8rem 4vw; }
+#long-form .section-inner { max-width: 1000px; }
 
 .section-label {
   font-family: var(--font-mono);
@@ -252,6 +253,52 @@ section { position: relative; overflow: hidden; }
   line-height: 1;
   letter-spacing: 0.03em;
   margin-bottom: 3rem;
+}
+
+/* LONG-FORM SECTION */
+#long-form { background: var(--bg); }
+
+.video-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+.video-card {
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  transition: border-color 0.3s;
+}
+.video-card:hover { border-color: var(--accent); }
+.video-thumb {
+  width: 100%; aspect-ratio: 16/9;
+  min-height: 480px;
+  background: linear-gradient(135deg, #0e0e18 0%, #1a1a28 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 768px) {
+  .video-thumb { min-height: 0; }
+}
+.video-thumb iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0; pointer-events: auto;
+}
+.card-counter {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  padding: 0.8rem 1.25rem 0;
+  opacity: 0.7;
 }
 
 /* SHORT-FORM SECTION */
@@ -363,6 +410,9 @@ footer p {
 }
 .reveal.visible { opacity: 1; transform: none; }
 
+.video-grid .reveal:nth-child(1) { transition-delay: 0ms; }
+.video-grid .reveal:nth-child(2) { transition-delay: 60ms; }
+.video-grid .reveal:nth-child(3) { transition-delay: 120ms; }
 .shorts-grid .reveal:nth-child(1)  { transition-delay: 0ms; }
 .shorts-grid .reveal:nth-child(2)  { transition-delay: 50ms; }
 .shorts-grid .reveal:nth-child(3)  { transition-delay: 100ms; }
@@ -393,12 +443,14 @@ footer p {
 
 <!-- MOBILE NAV OVERLAY -->
 <div class="nav-overlay" id="navOverlay">
+  <a href="#long-form" class="overlay-link">Motion Graphics</a>
   <a href="#short-form" class="overlay-link">Short-Form</a>
 </div>
 
 <!-- NAV -->
 <nav>
   <ul class="nav-links">
+    <li><a href="#long-form" data-section="long-form">Motion Graphics</a></li>
     <li><a href="#short-form" data-section="short-form">Short-Form</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -447,6 +499,95 @@ footer p {
     <span>VFX &amp; Compositing</span><span class="dot"> ✦ </span>
   </div>
 </div>
+
+<!-- LONG-FORM / MOTION GRAPHICS SECTION -->
+<section id="long-form">
+  <div class="section-inner">
+    <p class="section-label reveal">Long-Form</p>
+    <h2 class="section-title reveal">MOTION<br>GRAPHICS</h2>
+    <div class="video-grid">
+
+      <div class="video-card reveal">
+        <span class="card-counter">01</span>
+        <div class="video-thumb">
+          <iframe
+            src="https://player.vimeo.com/video/1201926429?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <span class="card-counter">02</span>
+        <div class="video-thumb">
+          <iframe
+            src="https://player.vimeo.com/video/1201926431?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <span class="card-counter">03</span>
+        <div class="video-thumb">
+          <iframe
+            src="https://player.vimeo.com/video/1201926430?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <span class="card-counter">04</span>
+        <div class="video-thumb">
+          <iframe
+            src="https://player.vimeo.com/video/1193072164?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <span class="card-counter">05</span>
+        <div class="video-thumb">
+          <iframe
+            src="https://player.vimeo.com/video/1193072167?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="video-card reveal">
+        <span class="card-counter">06</span>
+        <div class="video-thumb">
+          <iframe
+            src="https://player.vimeo.com/video/1193389135?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&loop=1"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- SHORT-FORM SECTION -->
 <section id="short-form">
@@ -534,7 +675,7 @@ document.addEventListener('mousemove', e => {
   requestAnimationFrame(animRing);
 })();
 
-document.querySelectorAll('a, button, .short-card').forEach(el => {
+document.querySelectorAll('a, button, .video-card, .short-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cursor.style.width  = '20px'; cursor.style.height  = '20px';
     ring.style.width    = '60px'; ring.style.height    = '60px';
