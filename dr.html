@@ -326,6 +326,21 @@
       gap: 24px;
     }
 
+    .video-grid.leads-grid {
+      grid-template-columns: minmax(0, 900px);
+      justify-content: center;
+    }
+
+    .leads-grid .video-card {
+      width: 100%;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .leads-grid .video-frame {
+      aspect-ratio: 16 / 9;
+    }
+
     .portfolio-group + .portfolio-group {
       margin-top: 104px;
       padding-top: 88px;
@@ -635,12 +650,12 @@
             </div>
           </div>
 
-          <div class="video-grid">
+          <div class="video-grid leads-grid">
             <article class="video-card reveal">
               <div class="video-frame">
                 <iframe src="https://www.youtube-nocookie.com/embed/2Kw1pdqu6ng" title="Lead video by Henrique de Oliveira" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">9:16</span></div>
+              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">16:9</span></div>
             </article>
           </div>
         </div>
