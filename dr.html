@@ -596,6 +596,42 @@
       .section-heading { align-items: center; margin-bottom: 30px; }
       .section-index { display: none; }
       .video-grid { grid-template-columns: 1fr; }
+
+      .ad-grid,
+      .ad-ed-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .ad-grid .video-card,
+      .ad-ed-grid .video-card {
+        width: 100%;
+        margin-inline: 0;
+        border-radius: 10px;
+      }
+
+      .ad-grid .video-meta,
+      .ad-ed-grid .video-meta {
+        min-height: 48px;
+        padding: 8px 7px;
+        gap: 4px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .ad-grid .video-title,
+      .ad-ed-grid .video-title {
+        font-size: 11px;
+        line-height: 1.15;
+      }
+
+      .ad-grid .video-type,
+      .ad-ed-grid .video-type {
+        font-size: 9px;
+        line-height: 1;
+      }
+
       .video-card { width: min(100%, 360px); margin-inline: auto; }
       .shorts-wrap { grid-template-columns: 1fr; }
       .shorts-wrap .video-card { width: min(100%, 360px); margin-inline: auto; }
@@ -681,7 +717,7 @@
           <div class="section-heading reveal">
             <div>
               <p class="section-label">Selected work</p>
-              <h2 id="leads-45-title">Leads</h2>
+              <h2 id="leads-45-title">Leads 4:5</h2>
             </div>
           </div>
 
@@ -717,7 +753,7 @@
             </div>
           </div>
 
-          <div class="video-grid">
+          <div class="video-grid ad-grid">
             <article class="video-card reveal">
               <div class="video-frame">
                 <iframe src="https://www.youtube-nocookie.com/embed/rDeJP9-nlHs" title="Ad edit 01 by Henrique de Oliveira" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -770,7 +806,7 @@
             </div>
           </div>
 
-          <div class="video-grid">
+          <div class="video-grid ad-ed-grid">
             <article class="video-card reveal">
               <div class="video-frame">
                 <iframe src="https://www.youtube-nocookie.com/embed/dDLATsdTaAo" title="Ad - Ed edit 01 by Henrique de Oliveira" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
