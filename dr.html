@@ -385,6 +385,7 @@
     .play-indicator {
       position: absolute;
       inset: 0;
+      z-index: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -420,12 +421,56 @@
     }
 
     .play-icon svg { width: 22px; height: 22px; }
-    .video-card.is-playing .icon-play { display: block; }
-    .video-card.is-playing .icon-pause { display: none; }
     .icon-play { display: block; }
     .icon-pause { display: none; }
     .video-card.is-playing .icon-play { display: none; }
     .video-card.is-playing .icon-pause { display: block; }
+
+    .video-controls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 10px 10px;
+      background: linear-gradient(0deg, rgba(0,0,0,.72), rgba(0,0,0,0));
+    }
+
+    .progress-track {
+      position: relative;
+      flex: 1;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.28);
+      cursor: pointer;
+    }
+
+    .progress-track::before {
+      content: "";
+      position: absolute;
+      inset: -7px 0;
+    }
+
+    .progress-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0%;
+      border-radius: 999px;
+      background: var(--accent-2);
+    }
+
+    .time-label {
+      flex: none;
+      color: #f0eef8;
+      font-size: 11px;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      text-shadow: 0 1px 3px rgba(0,0,0,.6);
+    }
 
     .video-meta {
       min-height: 60px;
@@ -581,6 +626,8 @@
       .video-type { font-size: 9px; }
       .play-icon { width: 40px; height: 40px; }
       .play-icon svg { width: 16px; height: 16px; }
+      .video-controls { padding: 6px 7px 8px; gap: 6px; }
+      .time-label { font-size: 9px; }
       .contact-card { border-radius: 18px; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { justify-content: center; }
@@ -957,12 +1004,35 @@
       revealItems.forEach((item) => observer.observe(item));
     }
 
-    /* ---- Custom video player: play/pause only, nothing else ---- */
+    /* ---- Custom video player: play/pause, progress bar and time ---- */
+    function formatTime(seconds) {
+      if (!isFinite(seconds) || seconds < 0) seconds = 0;
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
     document.querySelectorAll('.video-card').forEach((card) => {
       const video = card.querySelector('video');
-      if (!video) return;
+      const frame = card.querySelector('.video-frame');
+      if (!video || !frame) return;
 
-      video.loop = true;
+      video.loop = false; // let it finish and reset to the start instead of silently looping
+
+      // Build the custom controls bar (progress + time), no seek beyond click, no volume/speed/fullscreen
+      const controls = document.createElement('div');
+      controls.className = 'video-controls';
+      controls.innerHTML = `
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+        </div>
+        <span class="time-label">0:00 / 0:00</span>
+      `;
+      frame.appendChild(controls);
+
+      const progressTrack = controls.querySelector('.progress-track');
+      const progressFill = controls.querySelector('.progress-fill');
+      const timeLabel = controls.querySelector('.time-label');
 
       const toggle = () => {
         if (video.paused) {
@@ -986,8 +1056,42 @@
 
       video.addEventListener('play', () => card.classList.add('is-playing'));
       video.addEventListener('pause', () => card.classList.remove('is-playing'));
+      video.addEventListener('ended', () => card.classList.remove('is-playing'));
 
-      // Block anything beyond play/pause: no seeking via scrub, no fullscreen dbl-click
+      video.addEventListener('loadedmetadata', () => {
+        timeLabel.textContent = `${formatTime(0)} / ${formatTime(video.duration)}`;
+      });
+
+      video.addEventListener('timeupdate', () => {
+        const pct = video.duration ? (video.currentTime / video.duration) * 100 : 0;
+        progressFill.style.width = pct + '%';
+        timeLabel.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+      });
+
+      // Click (or drag) on the progress bar seeks; doesn't toggle play/pause on the card
+      const seekFromEvent = (event) => {
+        const rect = progressTrack.getBoundingClientRect();
+        const ratio = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+        if (video.duration) video.currentTime = ratio * video.duration;
+      };
+
+      progressTrack.addEventListener('click', (event) => {
+        event.stopPropagation();
+        seekFromEvent(event);
+      });
+
+      let isDragging = false;
+      progressTrack.addEventListener('pointerdown', (event) => {
+        isDragging = true;
+        event.stopPropagation();
+        seekFromEvent(event);
+      });
+      window.addEventListener('pointermove', (event) => {
+        if (isDragging) seekFromEvent(event);
+      });
+      window.addEventListener('pointerup', () => { isDragging = false; });
+
+      // Block anything beyond play/pause/seek: no right-click download menu
       video.addEventListener('contextmenu', (e) => e.preventDefault());
     });
   </script>
