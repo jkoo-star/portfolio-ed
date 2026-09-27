@@ -974,7 +974,6 @@
       const video = card.querySelector('video');
       if (!video) return;
 
-      video.muted = true; // needed for reliable autoplay-less click-to-play across browsers
       video.loop = true;
 
       const toggle = () => {
