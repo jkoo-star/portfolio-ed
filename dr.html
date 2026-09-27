@@ -362,6 +362,16 @@
       cursor: pointer;
     }
 
+    .video-frame.ratio-16-9 { aspect-ratio: 16 / 9; }
+    .video-frame.ratio-4-5 { aspect-ratio: 4 / 5; }
+
+    .video-grid-wide {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
     .video-frame video {
       position: absolute;
       inset: 0;
@@ -551,6 +561,7 @@
       .nav-links.open { opacity: 1; visibility: visible; transform: none; }
       .nav-links a { padding: 12px 14px; }
       .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-grid-wide { grid-template-columns: 1fr; }
       .about-layout { grid-template-columns: 1fr; }
     }
 
@@ -622,14 +633,6 @@
     <section class="section" id="videos" aria-labelledby="videos-title">
       <div class="container">
 
-        <!--
-          PLACEHOLDER PREVIEW:
-          Every card below points at the same sample video from your R2 bucket
-          so you can see the layout and the custom play/pause behavior.
-          Replace the src on each <video> tag with each real R2 file URL
-          once you're happy with the look.
-        -->
-
         <div class="portfolio-group" aria-labelledby="leads-title">
           <div class="section-heading reveal">
             <div>
@@ -638,11 +641,38 @@
             </div>
           </div>
 
+          <div class="video-grid-wide">
+            <article class="video-card reveal">
+              <div class="video-frame ratio-16-9">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/ML/ML%2016.9_1.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <div class="play-indicator" aria-hidden="true">
+                  <span class="play-icon">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                  </span>
+                </div>
+              </div>
+              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">16:9</span></div>
+            </article>
+
+            <article class="video-card reveal">
+              <div class="video-frame ratio-16-9">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/ML/ML%2016.9.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <div class="play-indicator" aria-hidden="true">
+                  <span class="play-icon">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                  </span>
+                </div>
+              </div>
+              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">16:9</span></div>
+            </article>
+          </div>
+
           <div class="video-grid">
-            <!-- Leads: row 1 -->
             <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+              <div class="video-frame ratio-4-5">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/ML/ML%20-%204-5.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -650,12 +680,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">01</span></div>
+              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">4:5</span></div>
             </article>
 
             <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+              <div class="video-frame ratio-4-5">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/ML/ML%20-%204-5_1.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -663,12 +693,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">02</span></div>
+              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">4:5</span></div>
             </article>
 
             <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+              <div class="video-frame ratio-4-5">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/ML/ML%20-%204-5_2.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -676,12 +706,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">03</span></div>
+              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">4:5</span></div>
             </article>
 
             <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+              <div class="video-frame ratio-4-5">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/ML/ML%20-%204-5_3.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -689,60 +719,7 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">04</span></div>
-            </article>
-
-            <!-- Leads: row 2 -->
-            <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
-                <div class="play-indicator" aria-hidden="true">
-                  <span class="play-icon">
-                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                  </span>
-                </div>
-              </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">05</span></div>
-            </article>
-
-            <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
-                <div class="play-indicator" aria-hidden="true">
-                  <span class="play-icon">
-                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                  </span>
-                </div>
-              </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">06</span></div>
-            </article>
-
-            <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
-                <div class="play-indicator" aria-hidden="true">
-                  <span class="play-icon">
-                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                  </span>
-                </div>
-              </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">07</span></div>
-            </article>
-
-            <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
-                <div class="play-indicator" aria-hidden="true">
-                  <span class="play-icon">
-                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                  </span>
-                </div>
-              </div>
-              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">08</span></div>
+              <div class="video-meta"><h3 class="video-title">Lead</h3><span class="video-type">4:5</span></div>
             </article>
           </div>
         </div>
@@ -756,10 +733,9 @@
           </div>
 
           <div class="video-grid">
-            <!-- Ad: row 1 -->
             <article class="video-card reveal">
               <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -767,12 +743,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">01</span></div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
             </article>
 
             <article class="video-card reveal">
               <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_1.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -780,12 +756,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">02</span></div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
             </article>
 
             <article class="video-card reveal">
               <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_2.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -793,12 +769,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">03</span></div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
             </article>
 
             <article class="video-card reveal">
               <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_3.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -806,26 +782,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">04</span></div>
-            </article>
-
-            <!-- Ad: row 2 -->
-            <article class="video-card reveal">
-              <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
-                <div class="play-indicator" aria-hidden="true">
-                  <span class="play-icon">
-                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-                  </span>
-                </div>
-              </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">05</span></div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
             </article>
 
             <article class="video-card reveal">
               <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_3_1.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -833,12 +795,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">06</span></div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
             </article>
 
             <article class="video-card reveal">
               <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_3_2.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -846,12 +808,12 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">07</span></div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
             </article>
 
             <article class="video-card reveal">
               <div class="video-frame">
-                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16%20-%20co%CC%81pia.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_3_3.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
                 <div class="play-indicator" aria-hidden="true">
                   <span class="play-icon">
                     <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -859,7 +821,33 @@
                   </span>
                 </div>
               </div>
-              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">08</span></div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
+            </article>
+
+            <article class="video-card reveal">
+              <div class="video-frame">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_3_4.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <div class="play-indicator" aria-hidden="true">
+                  <span class="play-icon">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                  </span>
+                </div>
+              </div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
+            </article>
+
+            <article class="video-card reveal">
+              <div class="video-frame">
+                <video src="https://pub-4fc9f63a5d2446f6b8280b80b1a6bccb.r2.dev/VideosPort/Ad/Ad%20-%209-16_3_5.mp4" playsinline webkit-playsinline preload="metadata" controlsList="nodownload noremoteplayback nofullscreen" disablePictureInPicture oncontextmenu="return false"></video>
+                <div class="play-indicator" aria-hidden="true">
+                  <span class="play-icon">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+                  </span>
+                </div>
+              </div>
+              <div class="video-meta"><h3 class="video-title">Ad</h3><span class="video-type">9:16</span></div>
             </article>
           </div>
         </div>
