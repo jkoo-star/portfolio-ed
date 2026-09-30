@@ -1,16 +1,135 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Redirecionando...</title>
 
-    <script>
-        window.location.replace(
-            "https://api.whatsapp.com/send/?phone=5562981348850&text=Oii%2C+quero+saber+mais+sobre+monetizar+meus+seguidores&type=phone_number&app_absent=0&utm_source=chatgpt.com"
-        );
-    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 0 40px rgba(37, 211, 102, 0.35);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        p {
+            color: #999;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .loader {
+            width: 100%;
+            height: 4px;
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .loader-bar {
+            height: 100%;
+            width: 0%;
+            background: #25D366;
+            border-radius: 10px;
+            animation: loading 2.5s linear forwards;
+        }
+
+        .manual {
+            color: #25D366;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .manual:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes loading {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
+    <div class="container">
+
+        <div class="icon">
+            ✓
+        </div>
+
+        <h1>Estou te redirecionando...</h1>
+
+        <p>
+            Você será direcionado para o WhatsApp<br>
+            para continuar o atendimento.
+        </p>
+
+        <div class="loader">
+            <div class="loader-bar"></div>
+        </div>
+
+        <a class="manual"
+           href="https://api.whatsapp.com/send/?phone=5562981348850&text=Oii%2C+quero+saber+mais+sobre+monetizar+meus+seguidores&type=phone_number&app_absent=0&utm_source=chatgpt.com">
+            Clique aqui se não for redirecionado
+        </a>
+
+    </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href =
+                "https://api.whatsapp.com/send/?phone=5562981348850&text=Oii%2C+quero+saber+mais+sobre+monetizar+meus+seguidores&type=phone_number&app_absent=0&utm_source=chatgpt.com";
+        }, 2500);
+    </script>
+
 </body>
 </html>
+```
